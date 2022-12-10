@@ -1,5 +1,5 @@
 {
-  "name": "dewey-ha",
+  "name": "@dancrumb/dewey-ha",
   "version": "1.0.0",
   "description": "342 Dewey Ave Home Automation",
   "main": "index.ts",
@@ -9,15 +9,19 @@
   "author": "Dan Rumney <dancrumb+ha@gmail.com>",
   "license": "UNLICENSED",
   "devDependencies": {
-    "@types/node": "^18.11.9",
-    "eslint": "^8.27.0",
-    "prettier": "^2.7.1",
-    "typescript": "^4.8.4"
+    "@types/node": "18.11.13",
+    "eslint": "^8.29.0",
+    "prettier": "^2.8.1",
+    "typescript": "^4.9.4"
   },
   "dependencies": {
     "mqtt": "^4.3.7",
     "ts-node": "^10.9.1"
   },
   "packageManager": "yarn@3.2.4",
-  "private": true
+  "private": true,
+  "workspaces": [
+    "packages/udp-mqtt-bridge",
+    "packages/blinds"
+  ]
 }
