@@ -1,0 +1,36 @@
+{
+  "folders": [
+    {
+      "name": "🏡 GIotTo",
+      "path": ".."
+    },
+    {
+      "name": "📦 @giotto/udp-mqtt-bridge",
+      "path": "../packages/udp-mqtt-bridge"
+    },
+    {
+      "name": "📦 @giotto/blinds",
+      "path": "../packages/blinds"
+    }
+  ],
+  "settings": {
+    "typescript.tsdk": ".yarn/sdks/typescript/lib",
+    "typescript.enablePromptUseWorkspaceTsdk": true,
+    "search.exclude": {
+      "**/.yarn": true,
+      "**/.pnp.*": true
+    },
+    "eslint.nodePath": ".yarn/sdks",
+    "prettier.prettierPath": ".yarn/sdks/prettier/index.js"
+  },
+  "extensions": {
+    "recommendations": [
+      "arcanis.vscode-zipfs",
+      "dbaeumer.vscode-eslint",
+      "esbenp.prettier-vscode",
+      "folke.vscode-monorepo-workspace",
+      "esbenp.prettier-vscode",
+      "gamunu.vscode-yarn"
+    ]
+  }
+}

@@ -4,7 +4,7 @@ There isn't a lot of definitive information out on the Internet about how to com
 
 ## Gateway/Mobile App
 
-You're not going to be talking directly to the blinds. Instead, you'll be talking to a WLAN bridge that came with your blinds. It's probably a 
+You're not going to be talking directly to the blinds. Instead, you'll be talking to a WLAN bridge that came with your blinds. It's probably a
 little USB dongle type thing that's plugged into a power socket.
 
 The first step is to get that configured using whatever mobile app your blinds company uses. As far as I can tell, they're all basically skins over the
@@ -26,12 +26,12 @@ To generate the token, you need to combine them with AES Encryption, 128-bits in
 ```javascript
 import { createCipheriv } from "node:crypto";
 
-const aes = createCipheriv("aes-128-ecb", key, Buffer.from("") );
+const aes = createCipheriv("aes-128-ecb", key, Buffer.from(""));
 
 const AccessToken = Buffer.concat([aes.update(token), aes.final()])
-                        .toString("hex")
-                        .toUpperCase()
-                        .slice(0, 32);
+  .toString("hex")
+  .toUpperCase()
+  .slice(0, 32);
 ```
 
 ## Communication
@@ -56,15 +56,22 @@ socket.bind(32101, () => {
   socket.setBroadcast(true);
 });
 
-const message = { /* as needed */}
+const message = {
+  /* as needed */
+};
 
-socket.send(JSON.stringify(message), 32100, MULTICAST_ADDRESS, (error, bytesSent) => {
+socket.send(
+  JSON.stringify(message),
+  32100,
+  MULTICAST_ADDRESS,
+  (error, bytesSent) => {
     // Handle error
-});
+  }
+);
 
 socket.on("message", (messageInJsonFormat) => {
-    // Handle message
-})
+  // Handle message
+});
 ```
 
 ## References

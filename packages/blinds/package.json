@@ -3,14 +3,14 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "private": true,
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Dan Rumney <dancrumb+ha@gmail.com",
   "license": "MIT",
   "dependencies": {
-    "@dancrumb/udp-mqtt-bridge": "*",
-    "raw-socket": "^1.7.0"
+    "@giotto/udp-mqtt-bridge": "*"
   },
   "devDependencies": {
     "@types/node": "^18.11.9",

@@ -1,15 +1,21 @@
 {
-  "name": "@dancrumb/dewey-ha",
+  "name": "@giotto/ha",
   "version": "1.0.0",
-  "description": "342 Dewey Ave Home Automation",
+  "description": "Giotto for Home Automation",
   "main": "index.ts",
+  "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "tsc --build"
   },
   "author": "Dan Rumney <dancrumb+ha@gmail.com>",
   "license": "UNLICENSED",
+  "engines": {
+    "node": ".nvmrc",
+    "yarn": ">=3"
+  },
   "devDependencies": {
-    "@types/node": "18.11.13",
+    "@types/node": "latest",
+    "@types/ws": "^8.5.3",
     "eslint": "^8.29.0",
     "prettier": "^2.8.1",
     "typescript": "^4.9.4"
@@ -18,10 +24,9 @@
     "mqtt": "^4.3.7",
     "ts-node": "^10.9.1"
   },
-  "packageManager": "yarn@3.2.4",
   "private": true,
   "workspaces": [
-    "packages/udp-mqtt-bridge",
-    "packages/blinds"
-  ]
+    "packages/*"
+  ],
+  "packageManager": "yarn@4.0.0-rc.33"
 }
