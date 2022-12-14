@@ -30,7 +30,8 @@
       "esbenp.prettier-vscode",
       "folke.vscode-monorepo-workspace",
       "esbenp.prettier-vscode",
-      "gamunu.vscode-yarn"
+      "gamunu.vscode-yarn",
+      "pomdtr.excalidraw-editor"
     ]
   }
 }
