@@ -5,7 +5,7 @@ the freedom to build clients and providers in their language of choice.
 
 Here's a basic diagram:
 
-![Overall architecture](./diagrams/overall.excalidraw)
+![Overall architecture](./diagrams/overall.png)
 
 ## General concepts
 

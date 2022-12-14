@@ -24,3 +24,5 @@ This repo comes ready with a lot of VS Code support. In particular, there's a wo
 ## What next?
 
 Well, it's early days. I'm working on docs in the `docs` directory and will be slowly building things up as I go. Feel free to open issues and PRs and I'll take a look at them. You can also try and find me at https://gitter.im/giotto-ha/community.
+
+ - [Architecture](docs/Architecture.md)
