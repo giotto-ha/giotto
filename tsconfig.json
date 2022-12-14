@@ -10,6 +10,9 @@
   "exclude": ["packages/**/tests/**", "packages/**/dist/**"],
   "references": [
     { "path": "./packages/blinds" },
-    { "path": "./packages/udp-mqtt-bridge" }
+    { "path": "./packages/udp-mqtt-bridge" },
+    { "path": "./packages/state" },
+    { "path": "./packages/orchestrator" },
+    { "path": "./packages/timekeeper" }
   ]
 }
