@@ -31,7 +31,8 @@
       "folke.vscode-monorepo-workspace",
       "esbenp.prettier-vscode",
       "gamunu.vscode-yarn",
-      "pomdtr.excalidraw-editor"
+      "pomdtr.excalidraw-editor",
+      "GitHub.vscode-pull-request-github"
     ]
   }
 }
