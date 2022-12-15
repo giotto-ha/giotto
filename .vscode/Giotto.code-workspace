@@ -14,7 +14,7 @@
     }
   ],
   "settings": {
-    "typescript.tsdk": ".yarn/sdks/typescript/lib",
+    "typescript.tsdk": "🏡 GIotTo/node_modules/typescript/lib",
     "typescript.enablePromptUseWorkspaceTsdk": true,
     "search.exclude": {
       "**/.yarn": true,

@@ -9,6 +9,7 @@
 mosquitto/data
 mosquitto/log
 
-dist
+node_modules/
+dist/
 
 */.envrc

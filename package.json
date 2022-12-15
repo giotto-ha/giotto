@@ -10,8 +10,8 @@
   "author": "Dan Rumney <dancrumb+ha@gmail.com>",
   "license": "UNLICENSED",
   "engines": {
-    "node": ".nvmrc",
-    "yarn": ">=3"
+    "node": "19.0.1",
+    "yarn": ">=1.2"
   },
   "devDependencies": {
     "@types/node": "latest",
@@ -28,5 +28,5 @@
   "workspaces": [
     "packages/*"
   ],
-  "packageManager": "yarn@4.0.0-rc.33"
+  "packageManager": "yarn@3.3.0"
 }

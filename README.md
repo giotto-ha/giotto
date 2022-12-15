@@ -14,16 +14,7 @@ Once you have node installed Node, you need to install [`yarn`](https://classic.
 npm install --global yarn
 ```
 
-This repo actually uses the [latest versions of Yarn](https://yarnpkg.com/getting-started), in particular [Zero-Installs](https://yarnpkg.com/features/zero-installs). If
-you're unfamiliar with what this brings, you should take some time to read the docs.
-
 If you run `yarn build` from the root of the repo, it should build all of the packages in the appropriate order.
-
-### IDE Support
-
-This repo comes ready with a lot of VS Code support. In particular, there's a workspace file in the `.vscode` directory and the appropriate [SDK support](https://yarnpkg.com/getting-started/editor-sdks) set up for yarn.
-
-If you're using another SDK, you'll need to make sure that it's using this repo's version of Typescript in `.yarn/sdks/typescript`, or has the PnP hooks installed some way so that dependencies can be resolved.
 
 ## What next?
 
