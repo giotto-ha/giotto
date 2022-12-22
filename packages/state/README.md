@@ -15,6 +15,8 @@ Registration is relatively straightforward. All communication is via the bus.
 
 Since every Provider is also a Thing, a new Provider will need to register itself first, before registering Things it's responsible for.
 
+These messages call go onto the `configuration` topic of the bus.
+
 ### ThingId
 
 A ThingId is how each thing in a GIoTTo network is represented.
@@ -94,6 +96,7 @@ There are a number of reasons why a registration request may be rejected:
    (highly unlikely but architecturally possible)
  - Reserved bits are set
    (since these carry meaning, it is safer to reject such requests and allow the Provider to try again without support for unknown capabilities) 
+ - `parentId` is not provided and bit 28 of `thingId` is not set.
  - Others that may be discovered
 
 The message will look like this:

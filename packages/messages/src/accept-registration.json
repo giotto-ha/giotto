@@ -1,0 +1,26 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://giotto.dev/accept-registration.json",
+  "title": "AcceptRegistration message",
+  "description": "A GIoTTo message for accepting the registration of a thing",
+  "type": "object",
+  "properties": {
+    "version": {
+      "type": "number"
+    },
+    "type": {
+      "type": "string",
+      "enum": ["RegisterThing"]
+    },
+    "thingId": {
+      "type": "integer"
+    },
+    "parentId": {
+      "type": "integer"
+    },
+    "uid": {
+      "type": "string"
+    }
+  },
+  "required": ["type", "thingId", "uid", "parentId"]
+}
