@@ -15,6 +15,10 @@
     {
       "name": "📦 @giotto/state",
       "path": "../packages/state"
+    },
+    {
+      "name": "📦 @giotto/messages",
+      "path": "../packages/messages"
     }
   ],
   "settings": {

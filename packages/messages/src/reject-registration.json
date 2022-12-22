@@ -1,0 +1,23 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://giotto.dev/reject-registration.json",
+  "title": "RejecttRegistration message",
+  "description": "A GIoTTo message for rejecting the registration of a thing",
+  "type": "object",
+  "properties": {
+    "version": {
+      "type": "number"
+    },
+    "type": {
+      "type": "string",
+      "enum": ["RegisterThing"]
+    },
+    "reason": {
+      "type": "string"
+    },
+    "uid": {
+      "type": "string"
+    }
+  },
+  "required": ["type", "reason", "uid"]
+}
