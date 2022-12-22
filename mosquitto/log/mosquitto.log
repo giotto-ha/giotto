@@ -26,3 +26,8 @@
 1668362398: Sending PUBLISH to mqttjs_ef1e8603 (d0, q0, r0, m0, 'presence', ... (10 bytes))
 1668362398: Received DISCONNECT from mqttjs_ef1e8603
 1668362398: Client mqttjs_ef1e8603 disconnected.
+1671677361: mosquitto version 2.0.15 starting
+1671677361: Config loaded from /mosquitto/config/mosquitto.conf.
+1671677361: Opening ipv4 listen socket on port 1883.
+1671677361: mosquitto version 2.0.15 running
+1671724946: Saving in-memory database to /mosquitto/data//mosquitto.db.
