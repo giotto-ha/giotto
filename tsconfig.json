@@ -8,11 +8,15 @@
   },
   "include": [],
   "exclude": ["packages/**/tests/**", "packages/**/dist/**"],
+  "ts-node": {
+    "esm": true
+  },
   "references": [
     { "path": "./packages/blinds" },
     { "path": "./packages/udp-mqtt-bridge" },
     { "path": "./packages/state" },
     { "path": "./packages/orchestrator" },
-    { "path": "./packages/timekeeper" }
+    { "path": "./packages/timekeeper" },
+    { "path": "./packages/logger" }
   ]
 }
