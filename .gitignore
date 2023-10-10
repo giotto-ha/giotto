@@ -16,3 +16,4 @@ dist/
 *.tsbuildinfo
 .DS_Store
 mosquitto/data
+mosquitto/log
