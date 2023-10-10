@@ -1,0 +1,25 @@
+{
+  "name": "@giotto/message-integrity",
+  "packageManager": "yarn@3.6.4",
+  "type": "module",
+  "engines": {
+    "node": ">=16.0.0"
+  },
+  "exports": {
+    "./*.js": "./dist/*.js",
+    "./*": "./dist/*",
+    "./package.json": "./package.json"
+  },
+  "scripts": {
+    "build": "tsc -b -v tsconfig.build.json",
+    "test": "jest"
+  },
+  "devDependencies": {
+    "@giotto/bus-connector": "workspace:^",
+    "@types/debug": "^4",
+    "typescript": "^5.2.2"
+  },
+  "dependencies": {
+    "debug": "^4.3.4"
+  }
+}
