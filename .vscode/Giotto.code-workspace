@@ -19,17 +19,34 @@
     {
       "name": "📦 @giotto/messages",
       "path": "../packages/messages"
+    },
+    {
+      "name": "📦 @giotto/bus-connector",
+      "path": "../packages/bus-connector"
     }
   ],
   "settings": {
-    "typescript.tsdk": "🏡 GIoTTo/node_modules/typescript/lib",
+    "typescript.tsdk": "🏡 GIotTo/.yarn/sdks/typescript/lib",
     "typescript.enablePromptUseWorkspaceTsdk": true,
+    "files.exclude": {
+      "**/.git": true,
+      "**/.svn": true,
+      "**/.hg": true,
+      "**/CVS": true,
+      "**/.DS_Store": true,
+      "**/Thumbs.db": true,
+      "node_modules": true
+    },
     "search.exclude": {
       "**/.yarn": true,
-      "**/.pnp.*": true
+      "**/.pnp.*": true,
+      "node_modules": true
     },
     "eslint.nodePath": ".yarn/sdks",
-    "prettier.prettierPath": ".yarn/sdks/prettier/index.js"
+    "prettier.prettierPath": ".yarn/sdks/prettier/index.js",
+    "editor.codeActionsOnSave": {
+      "source.fixAll": true
+    }
   },
   "extensions": {
     "recommendations": [
