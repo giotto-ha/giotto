@@ -1,4 +1,5 @@
-version: '3'
+version: '3.1'
+
 
 services:
   mqtt:
@@ -7,9 +8,21 @@ services:
     ports:
       - "1883:1883"
     volumes:
-      - "./mosquitto/conf:/mosquitto/config:ro"
+      - "./mosquitto/conf:/mosquitto/config:rw"
       - "./mosquitto/data:/mosquitto/data:rw"
       - "./mosquitto/log:/mosquitto/log:rw"
-      
+  mongo:
+    image: mongo
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: password
+    ports:
+      - 27017:27017
+    volumes:
+      - mongodb_data_container:/data/db
+
+volumes:
+  mongodb_data_container:
 
     
