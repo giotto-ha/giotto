@@ -9,7 +9,5 @@
   "type": "module",
   "private": true,
   "author": "Dan Rumney <dancrumb+ha@gmail.com",
-  "license": "MIT",
-  "devDependencies": {},
-  "dependencies": {}
+  "license": "MIT"
 }
