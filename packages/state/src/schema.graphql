@@ -1,0 +1,47 @@
+type Query {
+    things: [Thing!]!
+    thing(thingId: Int!): Thing
+}
+
+type Thing {
+    thingId: Int!
+    parent: Thing
+    eState: ThingState
+    sState: ThingState
+    config: Configuration
+}
+
+type ValueMeasure {
+    value: Int!
+    unit: String!
+}
+
+type StateMeasure {
+    state: String!
+}
+
+union Measure = ValueMeasure | StateMeasure
+
+type Observation {
+    label: String!
+    measure: Measure!
+}
+
+type HistoricalObservation {
+    timestamp: String!
+    label: String!
+    measure: Measure!
+}
+
+
+type ThingState {
+    lastObservation: String!
+    observations: [Observation!]!
+    log: [HistoricalObservation!]!
+}
+
+
+type Configuration {
+     "JSON String"
+    configString: String!
+}
