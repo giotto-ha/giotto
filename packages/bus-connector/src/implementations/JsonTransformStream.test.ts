@@ -1,6 +1,6 @@
 import { describe, it, expect } from "@jest/globals";
 import { AssertionError } from "assert";
-import { JsonTransformStream } from "./JsonTransformStream";
+import { JsonTransformStream } from "./JsonTransformStream.js";
 
 const streamTest = (
   { writtenData, expected }: { writtenData: string[]; expected: object[] },
