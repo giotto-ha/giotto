@@ -11,19 +11,20 @@ import { getKeys } from "@giotto/message-integrity/get-keys.js";
 import { subtle } from "node:crypto";
 import debug from "debug";
 
-interface RegistrationRequest extends BusMessage {
-  type: "RegisterThing";
+interface RegisterThingRequest extends BusMessage {
+  type: "RegisterThingRequest";
   uuid: string;
   publicKey: string;
 }
 
-interface RegistrationResponse extends BusMessage, RegistryEntry {
+interface RegisterThingResponse extends BusMessage, RegistryEntry {
+  type: "RegisterThingResponse"
   registryPublicKey: string;
 }
 
 const isRegistrationRequest = (
   message: BusMessage
-): message is RegistrationRequest => {
+): message is RegisterThingRequest => {
   return (
     message.type === "RegisterThing" &&
     ["uuid", "publicKey"].every((key) => key in message)
@@ -79,7 +80,7 @@ export class RegistryService {
         message.uuid,
         message.publicKey
       );
-      const responseMessage = await signMessage<RegistrationResponse>(
+      const responseMessage = await signMessage<RegisterThingResponse>(
         { type: "Registration", ...entry, registryPublicKey: this.publicKey },
         this.privateKey
       );
