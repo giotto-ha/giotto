@@ -44,8 +44,14 @@ This operation register's a Thing with the Registry. It's an idempotent operatio
 ### DeregisterThing
 This operation removes a Thing from the Registry.
 
+See [#19](https://github.com/giotto-ha/giotto/issues/19)
+
 ### ReplaceThing
 This operation replaces a Thing with UUID-A with a Thing with UUID-B. The new thing will retain the `thingId`. This is useful for replacing compatible Things without having to reconfigure everything.
 
+See [#20](https://github.com/giotto-ha/giotto/issues/20)
+
 ### UpdateKey
 This operation updates the public key associated with the Thing.
+
+See [#21](https://github.com/giotto-ha/giotto/issues/21)
