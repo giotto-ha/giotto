@@ -5,7 +5,8 @@
   "main": "index.ts",
   "type": "module",
   "scripts": {
-    "build": "tsc --build"
+    "build": "tsc --build",
+    "test": "jest"
   },
   "author": "Dan Rumney <dancrumb+ha@gmail.com>",
   "license": "UNLICENSED",

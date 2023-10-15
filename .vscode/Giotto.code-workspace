@@ -26,7 +26,7 @@
     }
   ],
   "settings": {
-    "typescript.tsdk": "🏡 GIotTo/.yarn/sdks/typescript/lib",
+    "typescript.tsdk": "🏡 GIoTTo/node_modules/typescript/lib",
     "typescript.enablePromptUseWorkspaceTsdk": true,
     "files.exclude": {
       "**/.git": true,
@@ -42,8 +42,6 @@
       "**/.pnp.*": true,
       "node_modules": true
     },
-    "eslint.nodePath": ".yarn/sdks",
-    "prettier.prettierPath": ".yarn/sdks/prettier/index.js",
     "editor.codeActionsOnSave": {
       "source.fixAll": true
     }
