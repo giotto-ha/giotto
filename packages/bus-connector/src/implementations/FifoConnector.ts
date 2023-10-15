@@ -22,14 +22,21 @@ export class FifoConnector implements BusConnector {
         })
     }
 
-    listenTo (topic: string, callback: (message: BusMessage) => void){
+    async listenTo (topic: string, callback: (message: BusMessage) => void){
         this.listeners.set(topic, callback);
     }
-    stopListeningTo (topic: string) {
+
+    async stopListeningTo (topic: string) {
         this.listeners.delete(topic);
     }
 
     sendMessage (topic: string, message: BusMessage) {
-        this.outputStream.write(JSON.stringify({ topic, message }));
+        return new Promise<void>((res, rej)=>this.outputStream.write(JSON.stringify({ topic, message }), (err)=> {
+            if(err) {
+                rej(err);
+            } else {
+                res();
+            }
+        }));
     }
 }
