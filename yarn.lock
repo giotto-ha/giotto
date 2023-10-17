@@ -1564,19 +1564,6 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@dancrumb/registry@workspace:packages/registry":
-  version: 0.0.0-use.local
-  resolution: "@dancrumb/registry@workspace:packages/registry"
-  dependencies:
-    "@giotto/bus-connector": "workspace:^"
-    "@giotto/message-integrity": "workspace:^"
-    "@giotto/udp-mqtt-bridge": "*"
-    "@types/node": 20
-    ts-node: ^10.9.1
-    typescript: ^5.2.2
-  languageName: unknown
-  linkType: soft
-
 "@eslint-community/eslint-utils@npm:^4.2.0, @eslint-community/eslint-utils@npm:^4.4.0":
   version: 4.4.0
   resolution: "@eslint-community/eslint-utils@npm:4.4.0"
@@ -1637,11 +1624,13 @@ __metadata:
     "@types/ws": ^8.5.3
     "@typescript-eslint/eslint-plugin": ^6.7.4
     "@typescript-eslint/parser": ^6.7.4
+    diosaur: ^0.2.2
     eslint: ^8.51.0
     eslint-config-prettier: ^9.0.0
     jest: ^29.7.0
     mqtt: ^4.3.7
     prettier: ^3.0.3
+    reflect-metadata: ^0.1.13
     ts-jest: ^29.1.1
     ts-node: ^10.9.1
     typescript: ^5.2.2
@@ -1684,6 +1673,19 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@giotto/registry@workspace:packages/registry":
+  version: 0.0.0-use.local
+  resolution: "@giotto/registry@workspace:packages/registry"
+  dependencies:
+    "@giotto/bus-connector": "workspace:^"
+    "@giotto/message-integrity": "workspace:^"
+    "@giotto/udp-mqtt-bridge": "workspace:^"
+    "@types/node": 20
+    ts-node: ^10.9.1
+    typescript: ^5.2.2
+  languageName: unknown
+  linkType: soft
+
 "@giotto/state@workspace:packages/state":
   version: 0.0.0-use.local
   resolution: "@giotto/state@workspace:packages/state"
@@ -1723,7 +1725,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@giotto/udp-mqtt-bridge@*, @giotto/udp-mqtt-bridge@workspace:packages/udp-mqtt-bridge":
+"@giotto/udp-mqtt-bridge@*, @giotto/udp-mqtt-bridge@workspace:^, @giotto/udp-mqtt-bridge@workspace:packages/udp-mqtt-bridge":
   version: 0.0.0-use.local
   resolution: "@giotto/udp-mqtt-bridge@workspace:packages/udp-mqtt-bridge"
   dependencies:
@@ -3702,6 +3704,13 @@ __metadata:
   version: 4.0.2
   resolution: "diff@npm:4.0.2"
   checksum: f2c09b0ce4e6b301c221addd83bf3f454c0bc00caa3dd837cf6c127d6edf7223aa2bbe3b688feea110b7f262adbfc845b757c44c8a9f8c0c5b15d8fa9ce9d20d
+  languageName: node
+  linkType: hard
+
+"diosaur@npm:^0.2.2":
+  version: 0.2.2
+  resolution: "diosaur@npm:0.2.2"
+  checksum: 31ce5c8c8f4372c501a778e16867f101f95a91a5d44cc317f4eed9fdda435bdb71c289a92c9696fe80bdf188df9024b7ae82f5b03e7e979e99169efa0f192037
   languageName: node
   linkType: hard
 
@@ -6563,6 +6572,13 @@ __metadata:
     process: ^0.11.10
     string_decoder: ^1.3.0
   checksum: 6f4063763dbdb52658d22d3f49ca976420e1fbe16bbd241f744383715845350b196a2f08b8d6330f8e219153dff34b140aeefd6296da828e1041a7eab1f20d5e
+  languageName: node
+  linkType: hard
+
+"reflect-metadata@npm:^0.1.13":
+  version: 0.1.13
+  resolution: "reflect-metadata@npm:0.1.13"
+  checksum: 798d379a7b6f6455501145419505c97dd11cbc23857a386add2b9ef15963ccf15a48d9d15507afe01d4cd74116df8a213247200bac00320bd7c11ddeaa5e8fb4
   languageName: node
   linkType: hard
 
