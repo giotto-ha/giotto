@@ -1,9 +1,8 @@
 {
-  "name": "@dancrumb/registry",
+  "name": "@giotto/registry",
   "version": "0.0.1",
   "description": "",
   "type": "module",
-  "main": "index.js",
   "private": true,
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -13,7 +12,7 @@
   "dependencies": {
     "@giotto/bus-connector": "workspace:^",
     "@giotto/message-integrity": "workspace:^",
-    "@giotto/udp-mqtt-bridge": "*"
+    "@giotto/udp-mqtt-bridge": "workspace:^"
   },
   "devDependencies": {
     "@types/node": "20",

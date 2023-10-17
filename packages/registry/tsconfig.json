@@ -1,12 +1,15 @@
 {
   "compilerOptions": {
-    "incremental": true, 
+    "incremental": true,
     "composite": true,
     "target": "ESNext",
     "module": "NodeNext",
     "moduleResolution": "NodeNext",
     "esModuleInterop": true,
     "strict": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "strictPropertyInitialization": false,
   },
   "references": [
     {

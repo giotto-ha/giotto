@@ -27,7 +27,9 @@
     "typescript": "^5.2.2"
   },
   "dependencies": {
+    "diosaur": "^0.2.2",
     "mqtt": "^4.3.7",
+    "reflect-metadata": "^0.1.13",
     "ts-node": "^10.9.1",
     "winston": "^3.8.2"
   },
@@ -40,5 +42,8 @@
     "ts-node@10.9.1": {
       "unplugged": true
     }
+  },
+  "resolutions": {
+    "diosaur@^0.2.2": "patch:diosaur@npm%3A0.2.2#./.yarn/patches/diosaur-npm-0.2.2-25a41f9311.patch"
   }
 }
