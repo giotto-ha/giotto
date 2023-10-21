@@ -11,9 +11,9 @@ mosquitto/log
 
 node_modules/
 dist/
+coverage/
 
-*/.envrc
+.envrc
+.env
 *.tsbuildinfo
 .DS_Store
-mosquitto/data
-mosquitto/log
