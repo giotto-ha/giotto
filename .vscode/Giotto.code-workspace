@@ -5,6 +5,10 @@
       "path": ".."
     },
     {
+      "name": "📦 @giotto/core",
+      "path": "../packages/core"
+    },
+    {
       "name": "📦 @giotto/udp-mqtt-bridge",
       "path": "../packages/udp-mqtt-bridge"
     },
@@ -23,6 +27,10 @@
     {
       "name": "📦 @giotto/bus-connector",
       "path": "../packages/bus-connector"
+    },
+    {
+      "name": "📦 @giotto/configurator",
+      "path": "../packages/configurator"
     }
   ],
   "settings": {
@@ -35,16 +43,33 @@
       "**/CVS": true,
       "**/.DS_Store": true,
       "**/Thumbs.db": true,
-      "node_modules": true
+      "node_modules": true,
+      "dist": true
+    },
+    "explorer.autoReveal": true,
+    "explorer.excludeGitIgnore": true,
+    "editor.codeActionsOnSave": {
+      "source.fixAll": true
     },
     "search.exclude": {
       "**/.yarn": true,
       "**/.pnp.*": true,
       "node_modules": true
     },
-    "editor.codeActionsOnSave": {
-      "source.fixAll": true
-    }
+    "jest.disabledWorkspaceFolders": [
+      "📦 @giotto/core",
+      "📦 @giotto/udp-mqtt-bridge",
+      "📦 @giotto/blinds",
+      "📦 @giotto/state",
+      "📦 @giotto/messages",
+      "📦 @giotto/bus-connector",
+      "📦 @giotto/configurator"
+    ],
+    "jest.autoRun": "on-save",
+    "jest.testExplorer": {
+      "showInlineError": true,
+    },
+    "jest.jestCommandLine": "yarn test"
   },
   "extensions": {
     "recommendations": [
