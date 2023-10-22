@@ -2,11 +2,21 @@
   "compilerOptions": {
     "incremental": true, 
     "composite": true,
+    "outDir": "./dist",
     "target": "ESNext",
     "module": "NodeNext",
     "moduleResolution": "NodeNext",
     "esModuleInterop": true,
     "strict": true,
+    "noUnusedParameters": false
   },
-  "include": ["./src"],
+  "include": ["./src/**/*", "./src/*"],
+  "references": [
+    {
+      "path": "../core"
+    },
+    {
+      "path": "../bus-connector"
+    }
+  ]
 }

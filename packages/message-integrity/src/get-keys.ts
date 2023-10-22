@@ -5,29 +5,38 @@ import debug from "debug";
 const PUBLIC_KEY_OPS = ["verify"] as const;
 const PRIVATE_KEY_OPS = ["sign"] as const;
 
-export const getKeys = async () => {
-  const privateKeyFile = process.env.PRIVATE_KEY_FILE ?? "./private.key";
+export type KeySet = {
+  privateKey: webcrypto.CryptoKey;
+  publicKey: webcrypto.CryptoKey;
+}
+
+const DEBUG=debug("message-integrity:get-keys");
+
+export const getKeys = async (): Promise<KeySet> => {
+  const privateKeyFile = process.env.PRIVATE_KEY_FILE ?? `./private.key`;
   let privateJwk: webcrypto.JsonWebKey | undefined = undefined;
   try {
     const privateKeyFileInfo = await stat(privateKeyFile);
     if (!privateKeyFileInfo.isFile()) {
       throw new Error(`Private key file ${privateKeyFile} is not a file.`);
     }
-    if (privateKeyFileInfo.mode !== 0o600) {
-      throw new Error(`Private key file ${privateKeyFile} is not protected.`);
+    const fileMode = (privateKeyFileInfo.mode & 0o777)
+    if (fileMode !== 0o400) {
+      throw new Error(`Private key file ${privateKeyFile} is not protected (${fileMode.toString(8)}).`);
     }
 
-    privateJwk = (await readFile(
+    privateJwk = JSON.parse(await readFile(
       privateKeyFile,
       "utf-8"
     )) as unknown as webcrypto.JsonWebKey;
   } catch (e) {
+    console.log(e)
     if (e instanceof SyntaxError) {
-      debug(
+      DEBUG(
         `Private key file ${privateKeyFile} is not a valid JSON file.`
       );
     }
-    debug(`Private key file ${privateKeyFile} is not valid.`);
+    DEBUG(`Private key file ${privateKeyFile} is not valid.`);
   }
   if (privateJwk === undefined) {
     const keyPair = await subtle.generateKey(
