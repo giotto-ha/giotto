@@ -7,7 +7,7 @@
   "include": [],
   "references": [
     {
-      "path": "./src"
+      "path": "../core"
     }
   ]
 }
