@@ -6,6 +6,7 @@
     "target": "ES2022",
     "module": "node16",
     "rootDir": "./",
+    "outDir": "./dist",
     "moduleResolution": "node16",
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true /* Ensure that casing is correct in imports. */,
@@ -27,10 +28,8 @@
     "noImplicitOverride": true /* Ensure overriding members in derived classes are marked with an override modifier. */,
     "noPropertyAccessFromIndexSignature": true /* Enforces using indexed accessors for keys declared using an indexed type. */
   },
-  "include": [],
-  "references": [
-    {
-      "path": "./src"
-    }
+  "include": [
+    "./src/**/*",
+    "./src/*"
   ]
 }
