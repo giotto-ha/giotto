@@ -4,7 +4,6 @@ import { MongoClient } from "mongodb";
 import { Registry, RegistryEntry } from "./Registry.js";
 import {RegistryService} from "./RegistryService.js";
 import { FifoConnector } from "@giotto/bus-connector/implementations/FifoConnector.js";
-import { getContainer, setParameter } from 'diosaur';
 
 const { MONGO_USERNAME = "", MONGO_PASSWORD = "" } = process.env;
 
@@ -22,11 +21,8 @@ client.connect().then(() => {
 });
 
 const registryCollection = client.db(dbName).collection<RegistryEntry>('registry');
+const registry = new Registry(registryCollection);
 
-setParameter("RegistryCollection", registryCollection);
-setParameter("RegistryConnector", new FifoConnector('./registry.fifo'));
 
-const container = await getContainer();
-
-const service = container.get(RegistryService);
+const service = new RegistryService(new FifoConnector('./registry.fifo'), registry)
 service.start();

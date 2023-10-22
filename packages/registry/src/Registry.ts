@@ -1,4 +1,3 @@
-import { Inject, Parameter, Service } from "diosaur";
 import type {  Collection } from "mongodb";
 
 export type RegistryEntry = {
@@ -8,9 +7,9 @@ export type RegistryEntry = {
 }
 
 
-@Service()
+
 export class Registry {
-  constructor(@Parameter('RegistryCollection') private registry: Collection<RegistryEntry>) {}
+  constructor( private registry: Collection<RegistryEntry>) {}
   
   async getNextThingId() {
     const latestThing = await this.registry.find().sort({ thingId: -1 }).limit(1).next();

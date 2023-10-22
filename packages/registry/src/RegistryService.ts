@@ -10,7 +10,6 @@ import { signMessage } from "@giotto/message-integrity/sign.js";
 import { getKeys } from "@giotto/message-integrity/get-keys.js";
 import { subtle } from "node:crypto";
 import debug from "debug";
-import { Inject, Parameter, Service } from "diosaur";
 
 interface RegisterThingRequest extends BusMessage {
   type: "RegisterThingRequest";
@@ -34,15 +33,15 @@ const isRegistrationRequest = (
 
 const DEBUG = debug("registry:service")
 
-@Service()
+
 export class RegistryService {
   private privateKey!: CryptoKey;
   private publicKey!: CryptoKey;
   private started: boolean = false;
-  
+
   constructor(
-    @Parameter("RegistryConnector") private busConnector: BusConnector,
-    @Inject() private registry: Registry
+    private busConnector: BusConnector,
+    private registry: Registry
   ) { }
 
   async start() {
