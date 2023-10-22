@@ -38,7 +38,7 @@ export class GqlServerBuilder {
         return this;
     }
 
-    addDataSource<T>(name: string, dataSource: DataSource<T>) {
+    addDataSource<T>(_name: string, _dataSource: DataSource<T>) {}
 
 
 
