@@ -1,8 +1,8 @@
-import { BusMessage } from "@giotto/bus-connector/BusConnector.js";
+import { BusMessage, Unsigned } from "@giotto/bus-connector/BusConnector.js";
 import { subtle, webcrypto } from "node:crypto";
 
 export const signMessage = async <M extends BusMessage>(
-  message: Omit<M, 'signature'>,
+  message: Unsigned<M>,
   privateKey: webcrypto.CryptoKey
 ): Promise<M> => {
   delete message['signature']
