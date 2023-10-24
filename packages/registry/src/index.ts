@@ -4,6 +4,8 @@ import { MongoClient } from "mongodb";
 import { Registry, RegistryEntry } from "./Registry.js";
 import {RegistryService} from "./RegistryService.js";
 import { FifoConnector } from "@giotto/bus-connector/implementations/FifoConnector.js";
+import { MqttConnector } from '@giotto/bus-connector/implementations/MqttConnector.js';
+import { randomUUID } from 'node:crypto';
 
 const { MONGO_USERNAME = "", MONGO_PASSWORD = "" } = process.env;
 
@@ -22,7 +24,8 @@ client.connect().then(() => {
 
 const registryCollection = client.db(dbName).collection<RegistryEntry>('registry');
 const registry = new Registry(registryCollection);
+const uuid = randomUUID();
 
 
-const service = new RegistryService(new FifoConnector('./registry.fifo'), registry)
+const service = new RegistryService(new MqttConnector(), registry, uuid)
 service.start();

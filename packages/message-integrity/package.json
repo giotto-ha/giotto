@@ -1,6 +1,6 @@
 {
   "name": "@giotto/message-integrity",
-  "packageManager": "yarn@3.6.4",
+  "packageManager": "yarn@4.0.0",
   "type": "module",
   "engines": {
     "node": ">=16.0.0"
@@ -16,7 +16,7 @@
   },
   "devDependencies": {
     "@giotto/bus-connector": "workspace:^",
-    "@types/debug": "^4",
+    "@types/debug": "^4.1.10",
     "typescript": "^5.2.2"
   },
   "dependencies": {

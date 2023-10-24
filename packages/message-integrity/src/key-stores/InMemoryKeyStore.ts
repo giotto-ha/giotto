@@ -1,39 +1,39 @@
-import { ThingId } from "@giotto/core/things.js";
 import { webcrypto } from "node:crypto";
 import { KeyStore } from "../key-store.js";
+import { ThingId } from "@giotto/core/things.js";
 
 
 /**
  * KeyStore is a simple key-value store for storing public keys for Things
  */
-export class InMemoryKeyStore implements KeyStore {
-    private keys: Map<ThingId, webcrypto.CryptoKey> = new Map();
+export class InMemoryKeyStore<ID = ThingId> implements KeyStore<ID> {
+    private keys: Map<ID, webcrypto.CryptoKey> = new Map();
 
     /**
-     * Get the public key for a Thing
-     * @param thingId The Thing ID
-     * @returns The public key for the Thing
+     * Get the public key for a Thing or Provider
+     * @param id The Thing or Provider ID
+     * @returns The public key for the Thing or Provider
      */
-    public get(thingId: ThingId): Promise<webcrypto.CryptoKey | undefined> {
-        return Promise.resolve(this.keys.get(thingId));
+    public get(id: ID): Promise<webcrypto.CryptoKey | undefined> {
+        return Promise.resolve(this.keys.get(id));
     }
 
     /**
-     * Set the public key for a Thing
-     * @param thingId The Thing ID
-     * @param key The public key for the Thing
+     * Set the public key for a Thing or Provider
+     * @param id The Thing or Provider ID
+     * @param key The public key for the Thing or Provider
      */
-    public set(thingId: ThingId, key: webcrypto.CryptoKey): Promise<void> {
-        this.keys.set(thingId, key);
+    public set(id: ID, key: webcrypto.CryptoKey): Promise<void> {
+        this.keys.set(id, key);
         return Promise.resolve();
     }
 
     /**
-     * Delete the public key for a Thing
-     * @param thingId The Thing ID
+     * Delete the public key for a Thing or Provider
+     * @param id The Thing or Provider ID
      */
-    public delete(thingId: ThingId): Promise<void> {
-        this.keys.delete(thingId);
+    public delete(id: ID): Promise<void> {
+        this.keys.delete(id);
         return Promise.resolve();
     }
 
@@ -46,11 +46,11 @@ export class InMemoryKeyStore implements KeyStore {
     }
 
     /**
-     * Check if the key store has a public key for a Thing
-     * @param thingId The Thing ID
+     * Check if the key store has a public key for a Thing or Provider
+     * @param id The Thing or Provider ID
      * @returns True if the key store has a public key for the Thing
      */
-    public has(thingId: ThingId): Promise<boolean> {
-        return Promise.resolve(this.keys.has(thingId));
+    public has(id: ID): Promise<boolean> {
+        return Promise.resolve(this.keys.has(id));
     }
 }

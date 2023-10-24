@@ -1,11 +1,9 @@
 {
   "extends": "../tsconfig.json",
   "compilerOptions": {
-    "composite": true /* Enable constraints that allow a TypeScript project to be used with project references. */,
-    "tsBuildInfoFile": "./.base.tsbuildinfo" /* Specify the path to .tsbuildinfo incremental compilation file. */
+    "outDir": "./dist",
+    "composite": true
   },
   "include": [],
-  "references": [
-    
-  ]
+  "references": []
 }

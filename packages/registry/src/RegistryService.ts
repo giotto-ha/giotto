@@ -1,6 +1,6 @@
 import 'reflect-metadata';
 
-import { Registry, RegistryEntry } from "./Registry.js";
+import { Registry } from "./Registry.js";
 import type {
   BusConnector,
   BusMessage,
@@ -10,28 +10,13 @@ import { signMessage } from "@giotto/message-integrity/sign.js";
 import { getKeys } from "@giotto/message-integrity/get-keys.js";
 import { subtle } from "node:crypto";
 import debug from "debug";
+import { RegisterThingResponse, isRegistrationRequest } from './messages.js';
+import { REGISTRY_TOPIC } from './topics.js';
+import { UUID } from '@giotto/core/things.js';
+import { exportJwk } from '@giotto/message-integrity/jwks.js';
 
-interface RegisterThingRequest extends BusMessage {
-  type: "RegisterThingRequest";
-  uuid: string;
-  publicKey: string;
-}
 
-interface RegisterThingResponse extends BusMessage, RegistryEntry {
-  type: "RegisterThingResponse"
-  registryPublicKey: string;
-}
-
-const isRegistrationRequest = (
-  message: BusMessage
-): message is RegisterThingRequest => {
-  return (
-    message.type === "RegisterThing" &&
-    ["uuid", "publicKey"].every((key) => key in message)
-  );
-};
-
-const DEBUG = debug("registry:service")
+const DEBUG = debug("giotto:registry:service")
 
 
 export class RegistryService {
@@ -41,18 +26,20 @@ export class RegistryService {
 
   constructor(
     private busConnector: BusConnector,
-    private registry: Registry
+    private registry: Registry,
+    private uuid: UUID
   ) { }
 
   async start() {
     if (this.started) {
       return;
     }
-    DEBUG("Starting registry service");
+    DEBUG(`Starting registry service with UUID ${this.uuid}`);
     const { privateKey, publicKey } = await getKeys();
+    DEBUG(`Public key is ${await exportJwk(publicKey)}`)
     this.privateKey = privateKey;
     this.publicKey = publicKey;
-    this.busConnector.listenTo("registry", async (message: BusMessage) => {
+    this.busConnector.listenTo(REGISTRY_TOPIC, async (message: BusMessage) => {
       try {
         await this.handleMessage(message);
       } catch (e) {
@@ -65,7 +52,7 @@ export class RegistryService {
 
   shutdown() {
     DEBUG("Shutting down registry service");
-    this.busConnector.stopListeningTo("registry");
+    this.busConnector.stopListeningTo(REGISTRY_TOPIC);
     this.started = false;
     DEBUG("Registry service shut down");
   }
@@ -86,10 +73,10 @@ export class RegistryService {
           message.publicKey
         );
         const responseMessage = await signMessage<RegisterThingResponse>(
-          { type: "Registration", ...entry, registryPublicKey: this.publicKey },
+          { type: "RegisterThingResponse", ...entry, source: this.uuid, registryPublicKey: await exportJwk(this.publicKey) },
           this.privateKey
         );
-        this.busConnector.sendMessage("registry", responseMessage);
+        this.busConnector.sendMessage(REGISTRY_TOPIC, responseMessage);
       } catch (e) {
         if (e instanceof DOMException) {
           console.error("Hit a problem validating message", e.name, e.message);

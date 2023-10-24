@@ -9,6 +9,10 @@
       "path": "../packages/core"
     },
     {
+      "name": "📦 @giotto/message-integrity",
+      "path": "../packages/message-integrity"
+    },
+    {
       "name": "📦 @giotto/udp-mqtt-bridge",
       "path": "../packages/udp-mqtt-bridge"
     },
@@ -31,6 +35,10 @@
     {
       "name": "📦 @giotto/configurator",
       "path": "../packages/configurator"
+    },
+    {
+      "name": "📦 @giotto/registry",
+      "path": "../packages/registry"
     }
   ],
   "settings": {
@@ -62,6 +70,7 @@
       "📦 @giotto/blinds",
       "📦 @giotto/state",
       "📦 @giotto/messages",
+      "📦 @giotto/message-integrity",
       "📦 @giotto/bus-connector",
       "📦 @giotto/configurator"
     ],
@@ -69,7 +78,11 @@
     "jest.testExplorer": {
       "showInlineError": true,
     },
-    "jest.jestCommandLine": "yarn test"
+    "jest.jestCommandLine": "yarn test",
+    "editor.formatOnSave": true,
+    "cSpell.words": [
+      "jwks"
+    ]
   },
   "extensions": {
     "recommendations": [

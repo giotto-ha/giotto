@@ -1,0 +1,1 @@
+export const REGISTRY_TOPIC = "giotto/registry";

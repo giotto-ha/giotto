@@ -1,15 +1,16 @@
-export interface BusMessage {
-    type: string;
-    signature: string;
-    [key: string]: any;
+export interface BusMessage<T extends string = string> {
+    readonly type: T;
+    readonly signature: string;
 }
+
+export type Unsigned<M extends BusMessage<T>, T extends string =  string> = Omit<M, "signature">;
 
 export interface BusConnector {
-    listenTo: (topic: string, callback: (message: BusMessage) => void) => Promise<void>;
+    listenTo: (topic: string, callback: <T extends string>(message: BusMessage<T>) => void) => Promise<void>;
     stopListeningTo: (topic: string) => Promise<void>;
-    sendMessage: (topic: string, message: BusMessage) => Promise<void>;
+    sendMessage: <T extends string>(topic: string, message: BusMessage<T>) => Promise<void>;
 }
 
-export const isBusMessage = (message: any): message is BusMessage => {
+export const isBusMessage = <T extends string>(message: any): message is BusMessage<T> => {
     return typeof message === "object" && message !== null && "type" in message && "signature" in message;
 }   
