@@ -1,6 +1,7 @@
 {
   "extends": "../tsconfig.json",
   "compilerOptions": {
+    "strict": true,
     "module": "NodeNext",
     "composite": true,
     "target": "es2022",

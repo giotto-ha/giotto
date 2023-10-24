@@ -19,5 +19,19 @@ export default {
       rootDir: "<rootDir>/packages/bus-connector",
       testMatch: ["<rootDir>/**/*.test.ts"],
     },
+    {
+      extensionsToTreatAsEsm: [".ts"],
+      moduleNameMapper: {
+        "^(\\.{1,2}/.*)\\.js$": "$1",
+      },
+      preset: "ts-jest",
+      testEnvironment: "node",
+      transform: {},
+      displayName: "Message Integrity",
+      rootDir: "<rootDir>/packages/message-integrity",
+      testMatch: ["<rootDir>/**/*.test.ts"],
+    },
+  
   ],
+  
 };

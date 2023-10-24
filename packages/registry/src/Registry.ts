@@ -1,3 +1,4 @@
+import debug from "debug";
 import type {  Collection } from "mongodb";
 
 export type RegistryEntry = {
@@ -6,6 +7,7 @@ export type RegistryEntry = {
   publicKey: string
 }
 
+const DEBUG = debug("giotto:registry")
 
 
 export class Registry {
@@ -24,8 +26,10 @@ export class Registry {
   }
 
   async registerThing(uuid: string, publicKey: string) {
+    DEBUG(`Registering thing ${uuid}`);
     const registryEntry = await this.getThingByUuid(uuid);
     if (registryEntry) {
+      DEBUG(`Thing ${uuid} already registered as ${registryEntry.thingId}`)
       if (publicKey !== '' && registryEntry.publicKey !== publicKey) {
         throw new Error("Public key mismatch");
       }
@@ -35,6 +39,8 @@ export class Registry {
     const thingId = await this.getNextThingId();
     const newEntry = { uuid, thingId, publicKey };
     await this.registry.insertOne(newEntry);
+
+    DEBUG(`Registered thing ${uuid} as ${thingId}`)
 
     return newEntry;
   }

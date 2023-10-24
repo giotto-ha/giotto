@@ -6,10 +6,15 @@ import { webcrypto } from "node:crypto";
  * 
  * It's intentionally asynchronous to allow for implementations that store keys in a database (or similar)
  */
-export interface KeyStore {
-    get(thingId: ThingId): Promise<webcrypto.CryptoKey | undefined>;
-    set(thingId: ThingId, key: webcrypto.CryptoKey): Promise<void>;
-    delete(thingId: ThingId): Promise<void>;
+export interface KeyStore<ID=ThingId> {
+    get(thingId: ID): Promise<webcrypto.CryptoKey | undefined>;
+    set(thingId: ID, key: webcrypto.CryptoKey): Promise<void>;
+    delete(thingId: ID): Promise<void>;
     clear(): Promise<void>;
-    has(thingId: ThingId): Promise<boolean>;
+    has(thingId: ID): Promise<boolean>;
+}
+
+export interface ReadonlyKeyStore<ID=ThingId> {
+    get(thingId: ID): Promise<webcrypto.CryptoKey | undefined>;
+    has(thingId: ID): Promise<boolean>;
 }

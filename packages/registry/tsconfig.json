@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
     "incremental": true,
+    "outDir": "./dist",
     "composite": true,
     "target": "ESNext",
     "module": "NodeNext",
@@ -12,6 +13,12 @@
   "references": [
     {
       "path": "../bus-connector"
+    },
+    {
+      "path": "../message-integrity"
+    },
+    {
+      "path": "../core"
     }
   ]
 }

@@ -1,6 +1,6 @@
 {
   "name": "@giotto/bus-connector",
-  "packageManager": "yarn@3.6.4",
+  "packageManager": "yarn@4.0.0",
   "type": "module",
   "engines": {
     "node": ">=16.0.0"
@@ -17,9 +17,11 @@
   },
   "devDependencies": {
     "@jest/globals": "^29.7.0",
+    "@types/debug": "^4.1.10",
     "typescript": "^5.2.2"
   },
   "dependencies": {
-    "mqtt": "^5.1.2"
+    "debug": "^4.3.4",
+    "mqtt": "^5.1.3"
   }
 }

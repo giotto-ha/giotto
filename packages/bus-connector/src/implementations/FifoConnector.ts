@@ -6,13 +6,13 @@ import { JsonTransformStream } from "./JsonTransformStream.js";
 export class FifoConnector implements BusConnector {
     private inputStream: Readable;
     private outputStream: Writable;
-    private listeners: Map<string, (message: BusMessage) => void> = new Map();
+    private listeners: Map<string, <T extends string>(message: BusMessage<T>) => void> = new Map();
     
     constructor(fifoName: string) {
         this.inputStream = createReadStream(fifoName).pipe(new JsonTransformStream());
         this.outputStream = createWriteStream(fifoName);
 
-        this.inputStream.on("data", (data: {topic: string, message:BusMessage}) => {
+        this.inputStream.on("data", <T extends string>(data: {topic: string, message:BusMessage<T>}) => {
             console.log('Received message', data)
             const listener = this.listeners.get(data.topic);
             console.log('Listener', listener)
@@ -22,7 +22,7 @@ export class FifoConnector implements BusConnector {
         })
     }
 
-    async listenTo (topic: string, callback: (message: BusMessage) => void){
+    async listenTo (topic: string, callback: <T extends string>(message: BusMessage<T>) => void){
         this.listeners.set(topic, callback);
     }
 
@@ -30,7 +30,7 @@ export class FifoConnector implements BusConnector {
         this.listeners.delete(topic);
     }
 
-    sendMessage (topic: string, message: BusMessage) {
+    sendMessage <T extends string>(topic: string, message: BusMessage<T>) {
         return new Promise<void>((res, rej)=>this.outputStream.write(JSON.stringify({ topic, message }), (err)=> {
             if(err) {
                 rej(err);

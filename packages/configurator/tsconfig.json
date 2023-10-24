@@ -1,0 +1,27 @@
+{
+  "extends": "../tsconfig.json",
+  "compilerOptions": {
+    "module": "NodeNext",
+    "composite": true,
+    "target": "es2022",
+    "lib": [
+      "ES2022"
+    ],
+    "outDir": "./dist"
+  },
+  "include": [
+    "./src/**/*",
+    "./src/*"
+  ],
+  "references": [
+    {
+      "path": "../bus-connector"
+    },
+    {
+      "path": "../core"
+    },
+    {
+      "path": "../message-integrity"
+    }
+  ]
+}

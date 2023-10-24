@@ -4,8 +4,6 @@
     "module": "nodenext",
     "moduleResolution": "node16",
     "esModuleInterop": true,
-    "experimentalDecorators": true,
-    "emitDecoratorMetadata": true,
     "strict": true
   },
   "include": [],
@@ -31,6 +29,15 @@
     },
     {
       "path": "./packages/timekeeper"
+    },
+    {
+      "path": "./packages/message-integrity"
+    },
+    {
+      "path": "./packages/core"
+    },
+    {
+      "path": "./packages/configurator"
     },
   ]
 }

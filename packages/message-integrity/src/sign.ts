@@ -1,18 +1,22 @@
 import { BusMessage, Unsigned } from "@giotto/bus-connector/BusConnector.js";
-import { subtle, webcrypto } from "node:crypto";
+import { createHmac, subtle, webcrypto } from "node:crypto";
 
 export const signMessage = async <M extends BusMessage>(
   message: Unsigned<M>,
   privateKey: webcrypto.CryptoKey
 ): Promise<M> => {
-  delete message['signature']
-  
-  const messageBuffer = new TextEncoder().encode(
-    JSON.stringify(message)
-  );
-  const sig = await subtle.sign("RSASSA-PKCS1-v1_5", privateKey, messageBuffer);
+
+  const encoder = new TextEncoder();
+  const items = (Object.keys(message) as (keyof typeof message)[]).filter(key => key !== 'signature' && typeof key !== 'symbol').flatMap((key) => {
+
+    return `${String(key)}:${JSON.stringify(message[key])}`;
+
+  }).join('\n');
+
+  const sig = await subtle.digest('sha-256', encoder.encode(items));
+  const signature = btoa(String.fromCharCode(...new Uint8Array(sig)));
   return {
-    ...message,
-    signature: btoa(String.fromCharCode(...new Uint8Array(sig))),
-  } as M;
+    ...(message as M),
+    signature,
+  };
 };

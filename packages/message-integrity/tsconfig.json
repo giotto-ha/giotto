@@ -8,6 +8,7 @@
     "moduleResolution": "NodeNext",
     "esModuleInterop": true,
     "strict": true,
+    "noImplicitAny": true,
     "noUnusedParameters": false
   },
   "include": ["./src/**/*", "./src/*"],

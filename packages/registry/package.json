@@ -5,17 +5,24 @@
   "type": "module",
   "private": true,
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "tsc -b -v tsconfig.build.json"
+  },
+  "exports": {
+    ".": "./dist/Registry.js",
+    "./Registry.js": "./dist/Registry.js",
+    "./*": "./dist/*",
+    "./*.js": "./dist/*.js",
+    "./package.json": "./package.json"
   },
   "author": "Dan Rumney <dancrumb+ha@gmail.com",
   "license": "MIT",
   "dependencies": {
     "@giotto/bus-connector": "workspace:^",
-    "@giotto/message-integrity": "workspace:^",
-    "@giotto/udp-mqtt-bridge": "workspace:^"
+    "@giotto/core": "workspace:^",
+    "@giotto/message-integrity": "workspace:^"
   },
   "devDependencies": {
-    "@types/node": "20",
+    "@types/node": "20.8.8",
     "ts-node": "^10.9.1",
     "typescript": "^5.2.2"
   }

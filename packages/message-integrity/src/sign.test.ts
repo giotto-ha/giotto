@@ -2,11 +2,16 @@ import { describe, it, expect } from "@jest/globals";
 import { signMessage } from "./sign.js";
 import { getKeys } from "./get-keys.js";
 import { BusMessage, Unsigned } from "@giotto/bus-connector";
+
+interface TestMessage extends BusMessage<"test"> {
+    type: "test";
+    payload: string;
+}
 describe('sign', () => {
     it('should add a signature to a message', async () => {
         const keySet = await getKeys();
-        
-        const message: Unsigned<BusMessage> = {
+
+        const message: Unsigned<TestMessage> = {
             type: "test",
             payload: "test",
         };
