@@ -1,12 +1,15 @@
-import { connect as mqttConnect, MqttClient } from "mqtt";
+import { MqttClient, connect as mqttConnect } from "mqtt";
 import { MulticastGroup } from "./MulticastGroup.js";
 
-export class Bridge<M extends {}> {
+export class Bridge<M extends object> {
   private _bus: MqttClient;
   private _group: MulticastGroup<M>;
   private _connected: boolean = false;
 
-  constructor(public group: MulticastGroup<M>, public busIp: string) {
+  constructor(
+    public group: MulticastGroup<M>,
+    public busIp: string
+  ) {
     this._bus = mqttConnect(`mqtt://${busIp}`);
     this._group = group;
     console.log(this._bus);

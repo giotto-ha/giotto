@@ -11,9 +11,6 @@
     "packages/**/tests/**",
     "packages/**/dist/**"
   ],
-  "ts-node": {
-    "esm": true
-  },
   "references": [
     {
       "path": "./packages/blinds"
@@ -39,5 +36,8 @@
     {
       "path": "./packages/configurator"
     },
+    {
+      "path": "./packages/registry"
+    }
   ]
 }

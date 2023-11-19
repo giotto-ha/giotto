@@ -6,7 +6,9 @@
     "composite": true,
     "target": "es2022",
     "lib": ["ES2022"],
-    "outDir": "./dist"
+    "rootDir": "./src",
+    "outDir": "./dist",
+    
   },
-  "include": ["./src"]
+  "include": ["./src/**/*","./src/*"],
 }
