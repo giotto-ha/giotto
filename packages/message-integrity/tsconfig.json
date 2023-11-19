@@ -3,6 +3,7 @@
     "incremental": true, 
     "composite": true,
     "outDir": "./dist",
+"rootDir": "./src",
     "target": "ESNext",
     "module": "NodeNext",
     "moduleResolution": "NodeNext",
@@ -11,7 +12,7 @@
     "noImplicitAny": true,
     "noUnusedParameters": false
   },
-  "include": ["./src/**/*", "./src/*"],
+  "include": ["./src/**/*","./src/*"],
   "references": [
     {
       "path": "../core"

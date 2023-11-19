@@ -8,10 +8,8 @@
       "ES2022"
     ],
     "outDir": "./dist",
+    "rootDir": "./src",
     "types": []
   },
-  "include": [
-    "./src/**/*",
-    "./src/*"
-  ]
+  "include": ["./src/**/*","./src/*"]
 }

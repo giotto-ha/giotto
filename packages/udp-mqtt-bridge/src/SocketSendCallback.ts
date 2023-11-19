@@ -15,7 +15,7 @@ export const getCallback = (
         rs = resolve;
         rj = reject;
     });
-    let cb: SocketSendCallback = (err: Error | null, bytes: number) => {
+    const cb: SocketSendCallback = (err: Error | null, bytes: number) => {
         if (err) {
             rj(err);
         } else {

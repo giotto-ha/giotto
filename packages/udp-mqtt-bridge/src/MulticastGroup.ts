@@ -2,7 +2,7 @@ import { Socket, createSocket } from "node:dgram";
 import { EventEmitter } from "node:stream";
 import { SocketSendCallback, getCallback } from "./SocketSendCallback.js";
 
-export class MulticastGroup<M extends {}> extends EventEmitter {
+export class MulticastGroup<M extends object> extends EventEmitter {
   private _address: string;
   private _port: number;
   private _interface: string;

@@ -20,4 +20,12 @@ If you run `yarn build` from the root of the repo, it should build all of the pa
 
 Well, it's early days. I'm working on docs in the `docs` directory and will be slowly building things up as I go. Feel free to open issues and PRs and I'll take a look at them. You can also try and find me at https://gitter.im/giotto-ha/community.
 
- - [Architecture](docs/Architecture.md)
+- [Architecture](docs/Architecture.md)
+
+# Getting started
+
+Since this is a multi-workspace repo it can be tricky to figure out how to get started, so here's how to do it.
+
+1. First step is to start the Docker containers: `docker compose up -d` should do it
+2. Next, you'll want to start the GIoTTo registry: `DEBUG=giotto:* yarn workspace @giotto/registry start`
+3. Next, start the configurator: `DEBUG=giotto:* yarn workspace @giotto/configurator start`

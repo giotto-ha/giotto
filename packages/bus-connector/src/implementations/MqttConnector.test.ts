@@ -1,13 +1,13 @@
 import {
-  describe,
-  it,
-  expect,
-  beforeEach,
   afterEach,
+  beforeEach,
+  describe,
+  expect,
+  it,
   jest,
 } from "@jest/globals";
-import { MqttConnector } from "./MqttConnector.js";
 import { MqttClient, connectAsync } from "mqtt";
+import { MqttConnector } from "./MqttConnector.js";
 
 const delayedExpectation = async (fn: () => Promise<void>) => {
   await new Promise<void>((res, rej) =>
@@ -54,31 +54,33 @@ describe("MqttConnector", () => {
     testClient.publish("giotto:test", '{"type":"test","signature":"test"}');
     await delayedExpectation(async () => {
       expect(handler).toBeCalledWith({ type: "test", signature: "test" });
-  });
+    });
   });
 
   it("publishes to MQTT topics", async () => {
     await connector.awaitConnection();
 
-    const awaitingMessage = new Promise<void>(async (resolve, reject) => {
-      await testClient.subscribeAsync("giotto:test");
-      testClient.on("message", (topic, message) => {
-        if (topic !== "giotto:test") return;
-        try {
-          expect(message.toString()).toEqual(
-            '{"type":"test","signature":"test"}'
-          );
-          resolve();
-        } catch (e) {
-          reject(e);
-        }
-      });
+    const awaitingMessage = testClient.subscribeAsync("giotto:test").then(
+      () =>
+        new Promise<void>((resolve, reject) => {
+          testClient.on("message", (topic, message) => {
+            if (topic !== "giotto:test") return;
+            try {
+              expect(message.toString()).toEqual(
+                '{"type":"test","signature":"test"}'
+              );
+              resolve();
+            } catch (e) {
+              reject(e);
+            }
+          });
 
-      connector.sendMessage("giotto:test", {
-        type: "test",
-        signature: "test",
-      });
-    });
+          connector.sendMessage("giotto:test", {
+            type: "test",
+            signature: "test",
+          });
+        })
+    );
 
     return awaitingMessage;
   });
@@ -96,7 +98,7 @@ describe("MqttConnector", () => {
     await connector.stopListeningTo("giotto:test");
     testClient.publish("giotto:test", '{"type":"test","signature":"test"}');
     await delayedExpectation(async () => {
-          expect(handler).toBeCalledTimes(1);
+      expect(handler).toBeCalledTimes(1);
     });
   });
 

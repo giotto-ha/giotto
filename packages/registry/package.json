@@ -5,7 +5,8 @@
   "type": "module",
   "private": true,
   "scripts": {
-    "build": "tsc -b -v tsconfig.build.json"
+    "build": "tsc -b -v tsconfig.json",
+    "start": "node --loader @swc-node/register/esm src/index.ts"
   },
   "exports": {
     ".": "./dist/Registry.js",
@@ -22,8 +23,7 @@
     "@giotto/message-integrity": "workspace:^"
   },
   "devDependencies": {
-    "@types/node": "20.8.8",
-    "ts-node": "^10.9.1",
+    "@types/node": "20.9.0",
     "typescript": "^5.2.2"
   }
 }

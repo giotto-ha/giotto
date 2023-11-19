@@ -57,7 +57,8 @@
     "explorer.autoReveal": true,
     "explorer.excludeGitIgnore": true,
     "editor.codeActionsOnSave": {
-      "source.fixAll": true
+      "source.fixAll": true,
+      "source.organizeImports": true
     },
     "search.exclude": {
       "**/.yarn": true,
